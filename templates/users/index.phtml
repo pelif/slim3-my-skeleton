@@ -1,0 +1,54 @@
+<body>
+<div class="container">
+    <table class="table">
+    <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Name</th>
+      <th scope="col">Email</th>
+      <th scope="col">Created at</th>
+      <th scope="col">Remove</th>
+    </tr>
+    </thead>
+
+    <?php foreach($users as $user) { ?>
+    <tbody>
+    <tr>
+      <td><?php echo $user->id; ?></td>
+      <td><?php echo $user->name; ?></td>
+      <td><?php echo $user->email; ?></td>
+      <td><?php echo $user->created_at; ?></td> 
+      <td>
+      <a href="/users/<?=$user->id ?>" class="btn btn-primary">Remover</a>
+      </td>     
+    </tr>    
+    </tbody>
+    <?php } ?>
+    </table>
+
+    <form action="/users" method="post">
+    <legend>Adicionar novo usuário</legend>
+
+    <div class="form-group">
+    <small id="emailHelp" class="form-text text-muted">Insert Name of User</small>
+    <input type="text" name="name" class="form-control">    
+    </div>
+
+    <div class="form-group">
+    <small id="emailHelp" class="form-text text-muted">Insert E-mail of User</small>
+    <input type="text" name="email" class="form-control" >
+    </div>
+
+    <div class="form-group">
+    <small id="emailHelp" class="form-text text-muted">Insert Password of User</small>
+    <input type="password" name="password" class="form-control">
+    </div>
+
+    <div class="form-group">
+    <input type="submit" value="Salvar Usuário" class="btn btn-primary form-control">
+    </div>
+    </div>
+    </form>
+    </div>
+</div>
+</body>
