@@ -4,6 +4,8 @@ namespace Controllers;
 
 use Psr\Container\ContainerInterface; 
 use Models\Users; 
+use Slim\Http\Request;
+use Slim\Http\Response;
 
 class HomeController 
 {
@@ -13,7 +15,7 @@ class HomeController
         $this->container = $container; 
     }
 
-    public function index($request, $response, $args) {        
+    public function index(Request $request, Response $response, $args) {        
         $users = Users::all();         
         
     }

@@ -11,6 +11,10 @@
         return new Controllers\UserController($c); 
     }; 
 
+    $container['Controllers\LoginController'] = function($c) {        
+        return new Controllers\LoginController($c); 
+    }; 
+
     // view renderer
     $container['renderer'] = function ($c) {
         $settings = $c->get('settings')['renderer'];
