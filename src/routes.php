@@ -18,14 +18,16 @@ use Slim\Http\Response;
         $this->renderer->render($response, 'footer.phtml'); 
     });
 
-    $app->get('/users', function (Request $request, Response $response, $args) use ($container) {
+    $app->get('/users', '\Controllers\UserController:index'); 
+
+    // $app->get('/users', function (Request $request, Response $response, $args) use ($container) {
         
-        $table = $this->db->table('users'); 
-        $users = $table->get();         
-        $this->renderer->render($response, 'header.phtml'); 
-        $this->renderer->render($response, 'users/index.phtml', ['users' => $users]);         
-        $this->renderer->render($response, 'footer.phtml'); 
-    })->add($auth); 
+    //     $table = $this->db->table('users'); 
+    //     $users = $table->get();         
+    //     $this->renderer->render($response, 'header.phtml'); 
+    //     $this->renderer->render($response, 'users/index.phtml', ['users' => $users]);         
+    //     $this->renderer->render($response, 'footer.phtml'); 
+    // })->add($auth); 
 
 
     $app->post('/users', function (Request $request, Response $response, $args) use ($container) {
@@ -58,6 +60,6 @@ use Slim\Http\Response;
 
     }); 
 
-    $app->get('/home', \Controllers\HomeController::class . ':index'); 
+    $app->get('/home', '\Controllers\HomeController:index'); 
     
 // };

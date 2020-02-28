@@ -3,6 +3,7 @@
 namespace Controllers; 
 
 use Psr\Container\ContainerInterface; 
+use Models\Users; 
 
 class HomeController 
 {
@@ -12,7 +13,8 @@ class HomeController
         $this->container = $container; 
     }
 
-    public function index($request, $response, $args) {
-        return "This is my index page"; 
+    public function index($request, $response, $args) {        
+        $users = Users::all();         
+        
     }
 }

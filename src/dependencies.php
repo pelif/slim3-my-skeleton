@@ -1,14 +1,14 @@
 <?php
 
-use Slim\App;
-
-// return function (App $app) {
-    // $app = new App; 
     $container = $app->getContainer();    
 
     //Controllers injection
     $container['Controllers\HomeController'] = function($c) {        
         return new Controllers\HomeController($c); 
+    }; 
+
+    $container['Controllers\UserController'] = function($c) {        
+        return new Controllers\UserController($c); 
     }; 
 
     // view renderer
@@ -26,13 +26,13 @@ use Slim\App;
         return $logger;
     };
 
-    $container['db'] = function ($c) {
-        $settings = $c->get('settings')['db'];
-        $capsule = new \Illuminate\Database\Capsule\Manager; 
-        $capsule->addConnection($settings); 
-        $capsule->setAsGlobal(); 
-        $capsule->bootEloquent();
+    $capsule = new \Illuminate\Database\Capsule\Manager; 
+    $capsule->addConnection($container->get('settings')['db']); 
+    $capsule->setAsGlobal(); 
+    $capsule->bootEloquent(); 
 
+    $container['db'] = function ($container) use ($capsule) {
         return $capsule; 
-    };
-// };
+    }; 
+   
+
